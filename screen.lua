@@ -17,7 +17,7 @@ while true do
         break
     end
     if message == "order" then
-        for i = 1 , 10 do
+        for i = 1 , 3 do
             monitor.setBackgroundColor(colors.black)
             monitor.clear()
             monitor.setTextColor(colors.white)
