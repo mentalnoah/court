@@ -19,7 +19,7 @@ while true do
     if message == "order" then
         for i = 1 , 20 do
             monitor.setBackgroundColor(colors.black)
-            montor.clear()
+            monitor.clear()
             monitor.setTextColor(colors.white)
             center(3, "ORDER!")
             sleep(0.5)
