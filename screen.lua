@@ -27,6 +27,7 @@ while true do
             sleep(0.5)
             monitor.setBackgroundColor(colors.black)
             monitor.setTextColor(colors.white)
+            montor.clear()
         end
         monitor.clear()
     elseif channel == 56 then
