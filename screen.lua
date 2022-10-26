@@ -17,8 +17,17 @@ while true do
         break
     end
     if message == "order" then
-        center(3, "ORDER!")
-        sleep(5)
+        for i = 1 , 20 do
+            center(3, "ORDER!")
+            sleep(0.5)
+            monitor.setBackgroundColor(colors.white)
+            monitor.clear()
+            monitor.setTextColor(colors.black)
+            center(3, "ORDER!")
+            sleep(0.5)
+            monitor.setBackgroundColor(colors.black)
+            monitor.setTextColor(colors.white)
+        end
         monitor.clear()
     elseif channel == 56 then
         center(3, message)
