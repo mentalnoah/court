@@ -18,6 +18,9 @@ while true do
     end
     if message == "order" then
         for i = 1 , 20 do
+            monitor.setBackgroundColor(colors.black)
+            montor.clear()
+            monitor.setTextColor(colors.white)
             center(3, "ORDER!")
             sleep(0.5)
             monitor.setBackgroundColor(colors.white)
@@ -25,9 +28,6 @@ while true do
             monitor.setTextColor(colors.black)
             center(3, "ORDER!")
             sleep(0.5)
-            monitor.setBackgroundColor(colors.black)
-            monitor.setTextColor(colors.white)
-            montor.clear()
         end
         monitor.clear()
     elseif channel == 56 then
