@@ -1,5 +1,5 @@
 local monitor = peripheral.wrap("top")
-local modem = peripheral.wrap("right")
+local modem = peripheral.wrap("bottom")
 term.redirect(monitor)
 monitor.setTextScale(0.5)
 sizex, sizey = term.getSize()
