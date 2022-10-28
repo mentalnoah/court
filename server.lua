@@ -1,5 +1,5 @@
 local speaker = peripheral.find("speaker")
-local wmodem = peripheral.wrap("bottom")
+local wmodem = peripheral.wrap("right")
 local emodem = peripheral.wrap("top")
 local instruments = {"harp", "basedrum", "snare", "hat", "bass", "flute", "bell", "guitar", "chime", "xylophone", "iron_xylophone", "cow_bell", "didgeridoo", "bit", "banjo", "pling"}
 wmodem.open(44)
