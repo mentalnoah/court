@@ -1,5 +1,5 @@
 local monitor = peripheral.wrap("top")
-local modem = peripheral.wrap("bottom")
+local modem = peripheral.wrap("right")
 term.redirect(monitor)
 monitor.setTextScale(0.5)
 sizex, sizey = term.getSize()
@@ -56,9 +56,15 @@ local setup = function()
     term.write("_<^>")
     capslock = false
     term.setCursorPos(1,8)
-    input = {}
 end
-setup()
+local setupinput = function()
+    setup()
+    input = {}
+    checkpoint2 = false
+    checkpoint3 = false
+    checkpoint4 = false
+end
+setupinput()
 
 while true do
     while true do -- the pull event
@@ -68,7 +74,7 @@ while true do
     if x >= 1 and x <= 6 and y == 1 then -- order button
        modem.transmit(44, 33, "order")
     elseif x == 36 and y == 1 then -- top right reset button
-        setup()
+        setupinput()
     elseif x == 35 and y == 8 then -- capslock button
         local cx, cy = term.getCursorPos()
         capslock = not capslock
@@ -93,9 +99,29 @@ while true do
             table.insert(input, line8[x])
         end
     elseif y == 8 and x == 36 then -- send message
-        serialinput = table.concat(input)
-        modem.transmit(45,34,serialinput)
         setup()
+        term.setCursorPos(1,7)
+        if checkpoint2 == true then
+            if checkpoint3 == true then
+                if checkpoint4 == true then
+                    modem.transmit(45,34,input)
+                    setupinput()
+                else
+                    term.write("How long do you want this to go for? (1-9)")
+                    term.setCursorPos(1,8)
+                    checkpoint4 = true
+                end
+            else
+                term.write("Do you want it to flash? (y/n)")
+                term.setCursorPos(1,8)
+                checkpoint3 = true
+            end
+        else
+            term.write("What is the text size? (1-5)")
+            term.setCursorPos(1,8)
+            checkpoint2 = true
+        end
+        
     elseif y == 8 and x == 33 then -- space button
         table.insert(input, " ")
         term.write(" ")
@@ -110,4 +136,4 @@ while true do
         table.insert(input, line8[x])
     end
 end
--- make costomisation (text size, flash, text colour, time ) for the messages sent
+-- make costomisation for the messages sent
